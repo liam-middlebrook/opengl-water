@@ -48,13 +48,19 @@ void Plane::Draw(GLuint shaderProgram, Camera& cam)
 		glGetUniformLocation(shaderProgram, "viewMatrix"),
 		1,
 		GL_FALSE,
-		glm::value_ptr(cam.ViewMatrix())
+		glm::value_ptr(cam.ViewMatrix() * glm::scale(glm::mat4(1), glm::vec3(10, 1, 10)))
 		);
 	glUniformMatrix4fv(
 		glGetUniformLocation(shaderProgram, "projectionMatrix"),
 		1,
 		GL_FALSE,
 		glm::value_ptr(cam.ProjectionMatrix())
+		);
+	glUniform3f(
+		glGetUniformLocation(shaderProgram, "texOffset"),
+		cam.light.x,
+		cam.light.y,
+		cam.light.z
 		);
 
 	glBindVertexArray(this->vertexArray);

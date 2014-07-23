@@ -2,7 +2,7 @@
 
 glm::mat4 Camera::ViewMatrix()
 {
-	return glm::lookAt(position, position + rotation, glm::vec3(0.0f, 1.0f, 0.0f));
+	return glm::lookAt(position, target, glm::vec3(0.0f, 1.0f, 0.0f));
 }
 
 glm::mat4 Camera::ProjectionMatrix()

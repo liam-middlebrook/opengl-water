@@ -35,8 +35,10 @@ int main()
 
 	plane = new Plane();
 
-	cam.position = glm::vec3(2, 3, 0);
-	cam.rotation = -glm::normalize(cam.position);
+	cam.position = glm::vec3(3, 10, 3);
+	cam.target = glm::vec3(5,0,5);
+
+	cam.light = glm::vec3(0.0f, 0.0f, 0.0f);
 
 	glBindTexture(GL_TEXTURE_2D, loadTexture("18_vertex_texture_02.jpg"));
 
@@ -61,7 +63,8 @@ void setupWindowAndContext()
 
 void update()
 {
-	cam.position -= glm::vec3(0,0.00001f,0);
+	//cam.position -= glm::vec3(0,0.00001f,0);
+	cam.light -= glm::vec3(0.00001f,0.00002f,0);
 	glfwPollEvents();
 }
 
