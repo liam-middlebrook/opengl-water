@@ -1,5 +1,6 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include <iostream>
 
 #include "Plane.h"
 #include "Shader.h"
@@ -52,13 +53,21 @@ int main()
 
 void setupWindowAndContext()
 {
-	glfwInit();
+	if(!glfwInit())
+	{
+		std::cout << "GLFW Failed to Initialize!" << std::endl;
+		exit(EXIT_FAILURE);
+	}
 
 	window = glfwCreateWindow(640, 480, "OpenGL Water Demo", NULL, NULL);
 	glfwMakeContextCurrent(window);
 
 	glewExperimental = true;
-	glewInit();
+	if(glewInit() != GLEW_OK)
+	{
+		std::cout << "Glew Failed to Initialize!" << std::endl;
+		exit(EXIT_FAILURE);
+	}
 }
 
 void update()
