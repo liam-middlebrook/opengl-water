@@ -10,6 +10,7 @@ public:
 	Plane();
 	~Plane();
 	void Draw(GLuint shaderProgram, Camera& cam);
+	GLuint texture;
 private:
 	void InitVertices();
 	GLuint vertexArray;
