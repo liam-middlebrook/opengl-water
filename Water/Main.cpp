@@ -5,10 +5,13 @@
 #include "Plane.h"
 #include "Shader.h"
 #include "Texture.h"
+#include "GameTime.h"
 
 #pragma region Variables
 
 GLFWwindow* window;
+
+GameTime gameTime;
 
 GLuint shader;
 GLuint shader2;
@@ -86,8 +89,9 @@ void setupWindowAndContext()
 
 void update()
 {
+	gameTime.Update();
 	cam.position -= glm::vec3(0,0,0);
-	cam.light -= glm::vec3(0.00001f,0.00002f,0);
+	cam.light -= glm::vec3(0.1f,0.2f,0) * gameTime.GetDeltaTimeSecondsF();
 	glfwPollEvents();
 }
 
