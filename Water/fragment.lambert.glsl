@@ -22,4 +22,5 @@ void main()
 	Idiff = clamp(Idiff, 0.0, 1.0);
 	Idiff = vec4(1.0) - Idiff;
 	gl_FragColor = Idiff + vec4(0.0, 0.0, 1, 1.0);
+	gl_FragColor.a *= 0.4;
 }

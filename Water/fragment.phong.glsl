@@ -10,8 +10,8 @@ uniform vec3 texOffset;
 vec3 lightPos = vec3(5, 5, 5);
 vec4 lightDiff = vec4(.5, .5, .5, 1.0);
 
-vec4 specular = vec4(1.0, 1.0, 1.0, 1.0);
-float shininess = 200.0f;
+vec4 specular = vec4(1.0,1.0,1.0,1.0);
+float shininess = 50.0f;
 
 void main()
 {
@@ -34,4 +34,5 @@ void main()
 	Idiff = clamp(Idiff, 0.0, 1.0);
 	Idiff = vec4(1.0) - Idiff;
 	gl_FragColor = Iamb + Idiff + Ispec + vec4(0.0, 0.0, 1, 1.0);
+	gl_FragColor.a *= 0.4;
 }

@@ -3,6 +3,7 @@
 Plane::Plane()
 {
 	InitVertices();
+	this->texture = 0;
 }
 
 Plane::~Plane()
@@ -19,13 +20,13 @@ void Plane::InitVertices()
 	glGenBuffers(1, &this->vertexBuffer);
 	GLfloat vertices[] =
 	{
-	  0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
-	  1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 
-	  1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+	  0.0f, 0.0f, 0.0f, 1.0f, 0.0f,
+	  1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 
+	  1.0f, 0.0f, 1.0f, 0.0f, 1.0f,
 
-	  1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
-	  0.0f, 0.0f, 1.0f, 0.0f, 1.0f,
-	  0.0f, 0.0f, 0.0f, 0.0f, 0.0f
+	  1.0f, 0.0f, 1.0f, 0.0f, 1.0f,
+	  0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+	  0.0f, 0.0f, 0.0f, 1.0f, 0.0f
 	};
 	glBindBuffer(GL_ARRAY_BUFFER, this->vertexBuffer);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
@@ -44,6 +45,11 @@ void Plane::Draw(GLuint shaderProgram, Camera& cam)
 {
 	glUseProgram(shaderProgram);
 	
+	if(this->texture != 0)
+	{
+		glBindTexture(GL_TEXTURE_2D, this->texture);
+	}
+
 	glUniformMatrix4fv(
 		glGetUniformLocation(shaderProgram, "viewMatrix"),
 		1,
