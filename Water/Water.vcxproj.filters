@@ -22,6 +22,12 @@
     <None Include="fragment.glsl">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="fragment.lambert.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="fragment.phong.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

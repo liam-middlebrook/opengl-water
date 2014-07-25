@@ -67,6 +67,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="fragment.glsl" />
+    <None Include="fragment.lambert.glsl" />
+    <None Include="fragment.phong.glsl" />
     <None Include="packages.config" />
     <None Include="vertex.glsl" />
   </ItemGroup>
