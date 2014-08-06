@@ -73,8 +73,12 @@ void setupWindowAndContext()
 		std::cout << "GLFW Failed to Initialize!" << std::endl;
 		exit(EXIT_FAILURE);
 	}
-
-	window = glfwCreateWindow(640, 480, "OpenGL Water Demo", NULL, NULL);
+	
+	glfwWindowHint(GLFW_DECORATED, GL_FALSE);
+	glfwWindowHint(GLFW_VISIBLE, GL_FALSE);
+	window = glfwCreateWindow(WIN_WIDTH, WIN_HEIGHT, "OpenGL Water Demo", NULL, NULL);
+	glfwSetWindowPos(window, -1920, 0);
+	glfwShowWindow(window);
 	glfwMakeContextCurrent(window);
 
 	glewExperimental = true;

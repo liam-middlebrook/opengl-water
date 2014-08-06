@@ -5,6 +5,9 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#define WIN_WIDTH 1920.0f
+#define WIN_HEIGHT 1080.0f
+
 class Camera
 {
 public:

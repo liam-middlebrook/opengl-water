@@ -7,5 +7,5 @@ glm::mat4 Camera::ViewMatrix()
 
 glm::mat4 Camera::ProjectionMatrix()
 {
-	return glm::perspective(45.0f, 640.0f/480.0f, 0.01f, 100.0f);
+	return glm::perspective(45.0f, WIN_WIDTH/WIN_HEIGHT, 0.01f, 100.0f);
 }
