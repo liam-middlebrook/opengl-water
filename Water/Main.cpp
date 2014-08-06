@@ -54,8 +54,11 @@ int main()
 
 	waterTex = loadTexture("18_vertex_texture_02.jpg");
 	plane->texture=waterTex;
-
 	tex = loadTexture("rubber_duck-1331px.png");
+	tex = loadTexture("pebbles2.jpg");
+	glActiveTexture(GL_TEXTURE1);
+	glBindTexture(GL_TEXTURE_2D, tex);
+	glActiveTexture(GL_TEXTURE0);
 	plane2->texture = tex;
 
 	while(!glfwWindowShouldClose(window))
@@ -94,7 +97,7 @@ void setupWindowAndContext()
 void update()
 {
 	gameTime.Update();
-	cam.position -= glm::vec3(0,0,0);
+	//cam.position -= glm::vec3(0.5f,1.0f,0) * gameTime.GetDeltaTimeSecondsF();
 	cam.light -= glm::vec3(0.1f,0.2f,0) * gameTime.GetDeltaTimeSecondsF();
 	glfwPollEvents();
 }
@@ -103,7 +106,7 @@ void render()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	plane2->Draw(shader2, cam);
+	//plane2->Draw(shader2, cam);
 	plane->Draw(shader, cam);
 
 	glfwSwapBuffers(window);
