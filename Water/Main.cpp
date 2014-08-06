@@ -40,7 +40,7 @@ int main()
 
 	glClearColor(100/255.0f, 149/255.0f, 237/255.0f, 1.0f);
 
-	shader = loadShader("vertex.glsl", "fragment.phong.glsl");
+	shader = loadShader("vertex.glsl", "fragment.lambert.glsl");
 	shader2 = loadShader("vertex.glsl", "fragment.glsl");
 
 	plane = new Plane();
