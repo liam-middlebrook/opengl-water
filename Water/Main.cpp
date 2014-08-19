@@ -52,7 +52,7 @@ int main()
 
 	cam.light = glm::vec3(0.0f, 0.0f, 0.0f);
 
-	waterTex = loadTexture("18_vertex_texture_02.jpg");
+	waterTex = loadTexture("wave.jpg");
 	plane->texture=waterTex;
 	tex = loadTexture("rubber_duck-1331px.png");
 	tex = loadTexture("pebbles2.jpg");

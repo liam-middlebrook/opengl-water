@@ -96,6 +96,8 @@
     <Import Project="packages\glm.0.9.5.4\build\native\glm.targets" Condition="Exists('packages\glm.0.9.5.4\build\native\glm.targets')" />
     <Import Project="packages\freeimage.redist.3.16.0\build\native\freeimage.redist.targets" Condition="Exists('packages\freeimage.redist.3.16.0\build\native\freeimage.redist.targets')" />
     <Import Project="packages\freeimage.3.16.0\build\native\freeimage.targets" Condition="Exists('packages\freeimage.3.16.0\build\native\freeimage.targets')" />
+    <Import Project="packages\rxd_glew.redist.1.10.0.1\build\native\rxd_glew.redist.targets" Condition="Exists('packages\rxd_glew.redist.1.10.0.1\build\native\rxd_glew.redist.targets')" />
+    <Import Project="packages\rxd_glew.1.10.0.1\build\native\rxd_glew.targets" Condition="Exists('packages\rxd_glew.1.10.0.1\build\native\rxd_glew.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
