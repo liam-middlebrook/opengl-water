@@ -11,19 +11,18 @@ vec3 lightPos = vec3(5, 5, 5);
 vec4 lightDiff = vec4(.5, .5, .5, 1.0)*20;
 
 vec4 specular = vec4(1.0,1.0,1.0,1.0)*5;
-float shininess = 50.0f;
+float shininess = 5.0f;
 
 void main()
 {
 	vec3 vert = vertex;
 	vec4 texData = texture(tex, texCoord + texOffset.xy * vec2(0.4));
 	vec4 texData2 = texture(tex, texCoord + texOffset.xy * vec2(0.1, .2));
-	vec3 N = vec3(0.0, (texData.r + texData2.r ), 0.0);
+	vec3 N = normalize(texData.xyz + texData2.xyz);
 
-	//vert.y += texture(tex, texCoord).r;
 	
 	vec3 L = normalize(lightPos - vert);
-	vec3 E = normalize(-vert);
+	vec3 E = normalize(vec3(3, 10, 3));
 	vec3 R = normalize(-reflect(L, N));
 
 	vec4 Iamb = vec4(0);

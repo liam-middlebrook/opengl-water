@@ -40,7 +40,7 @@ int main()
 
 	glClearColor(100/255.0f, 149/255.0f, 237/255.0f, 1.0f);
 
-	shader = loadShader("vertex.glsl", "fragment.lambert.glsl");
+	shader = loadShader("vertex.glsl", "fragment.phong.glsl");
 	shader2 = loadShader("vertex.glsl", "fragment.glsl");
 
 	plane = new Plane();
@@ -52,10 +52,12 @@ int main()
 
 	cam.light = glm::vec3(0.0f, 0.0f, 0.0f);
 
-	waterTex = loadTexture("wave.jpg");
+	waterTex = loadTexture("water3.jpg");
+	//waterTex = loadTexture("18_vertex_texture_02.jpg");
 	plane->texture=waterTex;
 	tex = loadTexture("rubber_duck-1331px.png");
 	tex = loadTexture("pebbles2.jpg");
+	//tex = loadTexture("magic.jpg");
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, tex);
 	glActiveTexture(GL_TEXTURE0);
