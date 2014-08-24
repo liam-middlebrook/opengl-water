@@ -16,8 +16,8 @@ class Camera
 public:
 	glm::mat4 ViewMatrix();
 	glm::mat4 ProjectionMatrix();
-	void Rotation(float amount, glm::vec3& axis);
-	void Translate(glm::vec3& direction);
+	void Rotation(float amount, glm::vec3 axis);
+	void Translate(glm::vec3 direction);
 	glm::vec3 position;
 	glm::vec3 direction;
 	glm::vec3 light;

@@ -10,15 +10,15 @@ int main()
 		exit(EXIT_FAILURE);
 	}
 
-	if (glfwGetJoystickPresent(0))
+	if (glfwJoystickPresent(0))
 	{
 		std::cout << glfwGetJoystickName(0) << std::endl;
 		
 		while (true)
 		{
-			float* joyVals;
+			const float* joyVals;
 			int count;
-			joyVals = glfwGetJoystickAxes(0, count);
+			joyVals = glfwGetJoystickAxes(0, &count);
 
 			for (int i = 0; i < count; i++)
 			{

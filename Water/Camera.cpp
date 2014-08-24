@@ -1,11 +1,11 @@
 #include "Camera.h"
 
-void Camera::Rotation(float amount, glm::vec3& axis)
+void Camera::Rotation(float amount, glm::vec3 axis)
 {
 	direction =  glm::rotate(direction, amount, axis);
 }
 
-void Camera::Translate(glm::vec3& direction)
+void Camera::Translate(glm::vec3 direction)
 {
 	position += glm::rotate(direction, 1.0f, this->direction);
 }
