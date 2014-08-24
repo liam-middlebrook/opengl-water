@@ -24,6 +24,7 @@ Plane* plane2;
 
 Camera cam;
 
+glm::vec2 mousePosLast;
 #pragma endregion
 
 #pragma region Function Headers
@@ -47,8 +48,8 @@ int main()
 
 	plane2 = new Plane();
 
-	cam.position = glm::vec3(3, 10, 3);
-	cam.target = glm::vec3(5,0,5);
+	cam.position = glm::vec3(3, 5, 3);
+	cam.direction = glm::vec3(1, 1, 0);
 
 	cam.light = glm::vec3(0.0f, 0.0f, 0.0f);
 
@@ -100,6 +101,38 @@ void update()
 	gameTime.Update();
 	//cam.position -= glm::vec3(0.5f,1.0f,0) * gameTime.GetDeltaTimeSecondsF();
 	cam.light -= glm::vec3(0.1f,0.2f,0) * gameTime.GetDeltaTimeSecondsF();
+
+
+	//Camera Rotations
+	double xpos, ypos;
+	glfwGetCursorPos(window, &xpos, &ypos);
+	cam.Rotation(-(xpos-mousePosLast.x), glm::vec3(0, 1, 0));
+	cam.Rotation((ypos-mousePosLast.y), glm::vec3(1, 0, 0));
+	mousePosLast = glm::vec2(xpos, ypos);
+
+	//Camera Translations
+	glm::vec3 vel;
+	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+	{
+		vel += glm::vec3(-1, 0, 0);
+	}
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+	{
+		vel += glm::vec3(1, 0, 0);
+	}
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+	{
+		vel += glm::vec3(0, 0, -1);
+	}
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+	{
+		vel += glm::vec3(0, 0, 1);
+	}
+
+	vel *= gameTime.GetDeltaTimeSecondsF();
+
+	cam.Translate(vel);
+
 	glfwPollEvents();
 }
 

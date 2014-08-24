@@ -1,8 +1,18 @@
 #include "Camera.h"
 
+void Camera::Rotation(float amount, glm::vec3& axis)
+{
+	direction =  glm::rotate(direction, amount, axis);
+}
+
+void Camera::Translate(glm::vec3& direction)
+{
+	position += glm::rotate(direction, 1.0f, this->direction);
+}
+
 glm::mat4 Camera::ViewMatrix()
 {
-	return glm::lookAt(position, target, glm::vec3(0.0f, 1.0f, 0.0f));
+	return glm::lookAt(position, position + direction, glm::vec3(0.0f, 1.0f, 0.0f));
 }
 
 glm::mat4 Camera::ProjectionMatrix()
