@@ -1,10 +1,10 @@
-#version 420
+#version 330
 
 varying vec3 vertex;
 varying vec2 texCoord;
 
 uniform sampler2D tex;
-layout(binding = 1) uniform sampler2D frameBuffer;
+uniform sampler2D frameBuffer;
 uniform vec3 texOffset;
 
 vec3 lightPos = vec3(5, 5, 5);

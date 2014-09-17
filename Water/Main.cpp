@@ -82,6 +82,9 @@ void setupWindowAndContext()
 	
 	glfwWindowHint(GLFW_DECORATED, GL_FALSE);
 	glfwWindowHint(GLFW_VISIBLE, GL_FALSE);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	window = glfwCreateWindow(WIN_WIDTH, WIN_HEIGHT, "OpenGL Water Demo", NULL, NULL);
 	glfwShowWindow(window);
 	glfwMakeContextCurrent(window);
