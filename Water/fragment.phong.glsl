@@ -1,10 +1,11 @@
 #version 330
+#extension GL_ARB_shading_language_420pack : require
 
 varying vec3 vertex;
 varying vec2 texCoord;
 
 uniform sampler2D tex;
-uniform sampler2D frameBuffer;
+layout(binding = 1) uniform sampler2D frameBuffer;
 uniform vec3 texOffset;
 
 vec3 lightPos = vec3(5, 5, 5);
