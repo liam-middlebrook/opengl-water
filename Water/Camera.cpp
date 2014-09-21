@@ -1,17 +1,16 @@
 #include "Camera.h"
-
-void Camera::Rotation(float amount, glm::vec3 axis)
+#include <iostream>
+void Camera::Update()
 {
-	direction =  glm::rotate(direction, amount, axis);
-}
-
-void Camera::Translate(glm::vec3 direction)
-{
-	position += glm::rotate(direction, 1.0f, this->direction);
+  float angle = 5.0f;
+  //rotation = rotation * glm::angleAxis(angle, 1.0f, 0.0f, 0.0f);// rotate on axis 1,0,0
+  rotation = rotation * glm::angleAxis(angle, 0.0f, 0.0f, 1.0f);// rotate on axis 1,0,0
 }
 
 glm::mat4 Camera::ViewMatrix()
 {
+	glm::vec3 direction = glm::vec3(glm::toMat4(rotation)*glm::vec4(1));
+	std::cout << direction.x << " " << direction.y << " " << direction.z <<std::endl;
 	return glm::lookAt(position, position + direction, glm::vec3(0.0f, 1.0f, 0.0f));
 }
 

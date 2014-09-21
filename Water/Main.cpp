@@ -49,7 +49,9 @@ int main()
 	plane2 = new Plane();
 
 	cam.position = glm::vec3(3, 5, 3);
-	cam.direction = glm::vec3(1, 1, 0);
+	//cam.direction = glm::vec3(1, 1, 0);
+
+	cam.Update();
 
 	cam.light = glm::vec3(0.0f, 0.0f, 0.0f);
 
@@ -106,11 +108,13 @@ void update()
 	cam.light -= glm::vec3(0.1f,0.2f,0) * gameTime.GetDeltaTimeSecondsF();
 
 
+	cam.Update();
+
 	//Camera Rotations
 	double xpos, ypos;
 	glfwGetCursorPos(window, &xpos, &ypos);
-	cam.Rotation(-(xpos-mousePosLast.x), glm::vec3(0, 1, 0));
-	cam.Rotation((ypos-mousePosLast.y), glm::vec3(1, 0, 0));
+	//cam.Rotation(-(xpos-mousePosLast.x), glm::vec3(0, 1, 0));
+	//cam.Rotation((ypos-mousePosLast.y), glm::vec3(1, 0, 0));
 	mousePosLast = glm::vec2(xpos, ypos);
 
 	//Camera Translations
@@ -134,7 +138,7 @@ void update()
 
 	vel *= gameTime.GetDeltaTimeSecondsF();
 
-	cam.Translate(vel);
+	//cam.Translate(vel);
 
 	glfwPollEvents();
 }
