@@ -17,10 +17,12 @@ class Camera
 public:
 	glm::mat4 ViewMatrix();
 	glm::mat4 ProjectionMatrix();
-	void Update();
+	void Update(GLFWwindow* window);
+	void Translate(glm::vec3 vel);
 	glm::vec3 position;
 	glm::vec3 light;
-	glm::quat rotation;
+	glm::quat pitchRotation;
+	glm::quat yawRotation;
 };
 
 #endif
