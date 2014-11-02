@@ -4,13 +4,11 @@
 #include <glm/glm.hpp>
 #include <glm/gtx/rotate_vector.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/quaternion.hpp>
-#include <glm/gtx/quaternion.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <GLFW/glfw3.h>
 
-#define WIN_WIDTH 1920.0f
-#define WIN_HEIGHT 1080.0f
+#define WIN_WIDTH 640.0f
+#define WIN_HEIGHT 480.0f
 
 class Camera
 {
@@ -21,8 +19,8 @@ public:
 	void Translate(glm::vec3 vel);
 	glm::vec3 position;
 	glm::vec3 light;
-	glm::quat pitchRotation;
-	glm::quat yawRotation;
+	glm::vec3 rotation;
+	glm::mat4 rotMat;
 };
 
 #endif

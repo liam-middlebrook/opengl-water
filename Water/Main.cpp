@@ -58,6 +58,7 @@ int main()
 	plane->texture=waterTex;
 	tex = loadTexture("rubber_duck-1331px.png");
 	tex = loadTexture("pebbles2.jpg");
+
 	//tex = loadTexture("magic.jpg");
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, tex);
@@ -127,12 +128,18 @@ void update()
 	}
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 	{
-		vel += glm::vec3(0, 0, -1);
+		vel += glm::vec3(0, 0, 1);
 	}
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
 	{
-		vel += glm::vec3(0, 0, 1);
+		vel += glm::vec3(0, 0, -1);
 	}
+
+	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
+	{
+		shader = loadShader("vertex.glsl", "fragment.phong.glsl");
+	}
+
 
 	vel *= gameTime.GetDeltaTimeSecondsF();
 
