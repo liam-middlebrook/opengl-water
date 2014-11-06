@@ -80,7 +80,7 @@ void setupWindowAndContext()
 		std::cout << "GLFW Failed to Initialize!" << std::endl;
 		exit(EXIT_FAILURE);
 	}
-	
+
 	glfwWindowHint(GLFW_DECORATED, GL_FALSE);
 	glfwWindowHint(GLFW_VISIBLE, GL_FALSE);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -106,8 +106,7 @@ void update()
 	//cam.position -= glm::vec3(0.5f,1.0f,0) * gameTime.GetDeltaTimeSecondsF();
 	cam.light -= glm::vec3(0.1f,0.2f,0) * gameTime.GetDeltaTimeSecondsF();
 
-
-	cam.Update(window);
+	cam.UpdateRotation(window, 20.0f * gameTime.GetDeltaTimeSecondsF());
 
 	//Camera Rotations
 	double xpos, ypos;
