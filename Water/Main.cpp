@@ -65,6 +65,8 @@ int main()
 	glActiveTexture(GL_TEXTURE0);
 	plane2->texture = tex;
 
+	cam.rotation = glm::vec3(-173, -142, 0);
+
 	while(!glfwWindowShouldClose(window))
 	{
 		update();
