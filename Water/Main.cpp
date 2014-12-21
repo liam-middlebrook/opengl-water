@@ -20,11 +20,13 @@ GLuint waterTex;
 GLuint tex;
 
 Plane* plane;
-Plane* plane2;
 
 Camera cam;
 
 glm::vec2 mousePosLast;
+
+char* waveShader;
+
 #pragma endregion
 
 #pragma region Function Headers
@@ -37,7 +39,7 @@ void render();
 #pragma endregion
 
 int main(int argc, char* argv[])
-{
+ {
 	setupWindowAndContext();
 
 	// Set background to cornflowerblue
@@ -48,36 +50,36 @@ int main(int argc, char* argv[])
 		printf("Error only %d arguments provided!\n", argc);
 		printf("The proper format for arguments is `water [shader] [backgroundtexture]`\n");
 		exit(EXIT_FAILURE);
-	}
+ 	}
+
+	waveShader = argv[1];
 
 	// Load in our shaders
-	shader = loadShader("vertex.glsl", argv[1]);
+	shader = loadShader("vertex.glsl", waveShader);
 	shader2 = loadShader("vertex.glsl", "fragment.glsl");
 
 	plane = new Plane();
 
-	plane2 = new Plane();
-
+	// Set camera position and light position
 	cam.position = glm::vec3(3, 5, 3);
-	//cam.direction = glm::vec3(1, 1, 0);
-
 	cam.light = glm::vec3(0.0f, 0.0f, 0.0f);
 
+	// Set wave texture
 	waterTex = loadTexture("water3.jpg");
-	//waterTex = loadTexture("18_vertex_texture_02.jpg");
 	plane->texture=waterTex;
+
+	// Load in background texture
 	tex = loadTexture(argv[2]);
 
-	//tex = loadTexture("magic.jpg");
+	// Bind background texture to SLOT1
 	glActiveTexture(GL_TEXTURE1);
 	glBindTexture(GL_TEXTURE_2D, tex);
 	glActiveTexture(GL_TEXTURE0);
-	plane2->texture = tex;
 
 	cam.rotation = glm::vec3(-173, -142, 0);
 
 	while(!glfwWindowShouldClose(window))
-	{
+  	{
 		update();
 		render();
 	}
@@ -145,9 +147,10 @@ void update()
 		vel += glm::vec3(0, 0, -1);
 	}
 
+	// On spacebar reload wave shader
 	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
 	{
-		shader = loadShader("vertex.glsl", "fragment.phong.glsl");
+		shader = loadShader("vertex.glsl", waveShader);
 	}
 
 
@@ -163,7 +166,6 @@ void render()
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	//plane2->Draw(shader2, cam);
 	plane->Draw(shader, cam);
 
 	glfwSwapBuffers(window);
