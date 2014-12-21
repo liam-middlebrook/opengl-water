@@ -18,6 +18,8 @@ void Plane::InitVertices()
 	glBindVertexArray(this->vertexArray);
 
 	glGenBuffers(1, &this->vertexBuffer);
+	
+	// x y z u v
 	GLfloat vertices[] =
 	{
 	  0.0f, 0.0f, 0.0f, 1.0f, 0.0f,
@@ -28,13 +30,16 @@ void Plane::InitVertices()
 	  0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
 	  0.0f, 0.0f, 0.0f, 1.0f, 0.0f
 	};
+
 	glBindBuffer(GL_ARRAY_BUFFER, this->vertexBuffer);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(0);
-	//Bind data from buffer to the first shader layout
+	
+	//Bind data from buffer to the first shader layout (xyz)
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), 0);
 	glDisableVertexAttribArray(0);
 
+	//Bind data from the buffer to the second shader layout (uv)
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (void*)(3 * sizeof(GLfloat)));
 	glDisableVertexAttribArray(1);
