@@ -11,8 +11,9 @@ void GameTime::Update()
 	totalTime = glfwGetTime();
 	deltaTime = totalTime - lastUpdate;
 	lastUpdate = totalTime;
-	deltaTime = deltaTime > 0 ? deltaTime : std::numeric_limits<double>::epsilon();
+ 	deltaTime = deltaTime > 0 ? deltaTime : std::numeric_limits<double>::epsilon();
 }
+
 long GameTime::GetElapsedMillis()
 {
 	return static_cast<long>(totalTime * 1000.0);
