@@ -7,7 +7,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <GLFW/glfw3.h>
 
-#define WIN_WIDTH 1920
+#define WIN_WIDTH 1920.0f
 #define WIN_HEIGHT 1080.0f
 
 // A basic camera class

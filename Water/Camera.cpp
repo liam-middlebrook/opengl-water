@@ -3,7 +3,6 @@
 
 #include <iostream>
 
-#define DEBUG
 void Camera::UpdateRotation(GLFWwindow* window, float angleStep)
 {
 	if (glfwGetKey(window, GLFW_KEY_LEFT))
