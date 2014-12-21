@@ -5,4 +5,4 @@ CPPFLAGS = -std=c++11
 
 all:
 	$(CXX) $(CPPFLAGS) *.cpp $(LFLAGS) -o water
-	$(CXX) $(CPPFLAGS) tests/*.cpp $(LFLAGS) -o controllerTest
+	#$(CXX) $(CPPFLAGS) tests/*.cpp $(LFLAGS) -o controllerTest
