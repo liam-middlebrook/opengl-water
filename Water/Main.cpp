@@ -35,13 +35,22 @@ void update();
 void render();
 
 #pragma endregion
-int main()
+
+int main(int argc, char* argv[])
 {
 	setupWindowAndContext();
 
+	// Set background to cornflowerblue
 	glClearColor(100/255.0f, 149/255.0f, 237/255.0f, 1.0f);
 
-	shader = loadShader("vertex.glsl", "fragment.phong.glsl");
+	if(argc < 2)
+	{
+		printf("Error only %d arguments provided!", argc);
+		exit(EXIT_FAILURE);
+	}
+
+	// Load in our shaders
+	shader = loadShader("vertex.glsl", argv[1]);
 	shader2 = loadShader("vertex.glsl", "fragment.glsl");
 
 	plane = new Plane();
