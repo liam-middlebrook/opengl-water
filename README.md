@@ -16,3 +16,8 @@ pebbles).
 
 ![Screenshot of the Water Demo](http://i.imgur.com/3s5Ap1a.jpg)
 ![Screenshot of the Water Demo](http://i.imgur.com/7c81xl7.jpg)
+
+Installing on Fedora
+=======
+
+<code> sudo yum install glew-devel freeimage-devel glfw-devel glm-devel </code>
