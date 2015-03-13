@@ -7,6 +7,7 @@ if [[ $DISTRO == *"Debian"* ]]
 then
         # Install Dependencies for Debian
         echo "Debian Detected"
+        sudo apt-get install libglew-dev libfreeimage-dev libglfw-dev libglm-dev
 
 elif [[ $DISTRO == *"Fedora"* ]]
 then
